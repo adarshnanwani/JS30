@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="http://www.cornify.com/js/cornify.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = "Adarsh";
+      // Add a method to fire on key up
+      window.addEventListener("keyup", e => {
+        pressed.push(e.key);
+        // take only the latest pressed keys
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+        //check if it matches the secretCode
+        if (pressed.join("").includes(secretCode)) {
+          // Add random unicorns from cornify.js
+          corify_add();
+        }
+      });
+    </script>
+  </body>
+</html>
